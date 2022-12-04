@@ -5,7 +5,7 @@ def part1(input_data):
     duplicates = []
     for rucksack in input_data:
         length = int(len(rucksack) / 2)
-        compartment1, compartment2 = rucksack[:length], rucksack[length:]
+        compartment1, compartment2 = set(rucksack[:length]), set(rucksack[length:])
         duplicates.append(findduplicate(compartment1, compartment2))
     return sum(map(itemvalue, duplicates))
 
@@ -35,7 +35,7 @@ def part2(input_data):
     startindex = 0
     triples = []
     while startindex < len(input_data) - 2:
-        group = input_data[startindex:startindex+3]
+        group = list(map(set, input_data[startindex:startindex+3]))
         triples.append(findtriple(*group))
         startindex += 3
     return sum(map(itemvalue, triples))
