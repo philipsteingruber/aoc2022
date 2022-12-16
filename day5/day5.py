@@ -50,7 +50,7 @@ if __name__ == '__main__':
             curr_index = 0
             while curr_index < len(line):
                 if line[curr_index] == "[":
-                    stacks[int(curr_index / 4) + 1].append(line[curr_index+1])
+                    stacks[curr_index // 4 + 1].append(line[curr_index+1])
                 curr_index += box_length
         else:
             instructions.append(list(map(int, re.match(pattern, line).groups())))
